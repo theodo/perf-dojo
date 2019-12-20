@@ -1,0 +1,10 @@
+App\Entity\Breed:
+  breed_1:
+    breedName: '<username()>'
+
+App\Entity\CatPicture:
+  cat_{1..100}:
+    catName: '<username()>'
+    breed: '@breed_*'
+    catPicture: 'cat.png?id=<current()>'
+

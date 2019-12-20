@@ -1,6 +1,12 @@
 {
     "type": "project",
     "license": "proprietary",
+    "repositories": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/olix21/AliceBundle.git"
+        }
+    ],
     "require": {
         "php": "^7.2.5",
         "ext-ctype": "*",
@@ -18,7 +24,7 @@
         "symfony/mailer": "5.0.*",
         "symfony/monolog-bundle": "^3.1",
         "symfony/notifier": "5.0.*",
-        "symfony/orm-pack": "*",
+        "symfony/orm-pack": "^1.0",
         "symfony/process": "5.0.*",
         "symfony/security-bundle": "5.0.*",
         "symfony/serializer-pack": "*",
@@ -30,8 +36,9 @@
         "symfony/yaml": "5.0.*"
     },
     "require-dev": {
+        "hautelook/alice-bundle": "dev-sf5",
         "symfony/debug-pack": "*",
-        "symfony/maker-bundle": "^1.0",
+        "symfony/maker-bundle": "^1.14",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*"
     },
