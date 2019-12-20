@@ -2,29 +2,28 @@
 
 namespace App\Controller;
 
-use App\Repository\CatPictureRepository;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\BreedRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends AbstractController
 {
     /**
-     * @var CatPictureRepository
+     * @var BreedRepository
      */
-    private $catPictureRepository;
+    private $breedRepository;
 
-    public function __construct(CatPictureRepository $catPictureRepository)
+    public function __construct(BreedRepository $breedRepository)
     {
-        $this->catPictureRepository = $catPictureRepository;
+        $this->breedRepository = $breedRepository;
     }
 
     public function homeAction(): Response
     {
-        $pics = $this->catPictureRepository->findAll();
+        $breeds = $this->breedRepository->findAll();
 
         return $this->render('home.html.twig', [
-            'pics' => $pics,
+            'breeds' => $breeds,
         ]);
     }
 }

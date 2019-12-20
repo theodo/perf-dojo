@@ -2,9 +2,14 @@
 
 {% block body %}
     <h1>Pics of cats</h1>
-    <div style="display: grid;grid-template-columns: repeat(3, 1fr);grid-gap: 10px;grid-auto-rows: minmax(100px, auto);">
-      {% for pic in pics %}
-        <div>{{ loop.index }} {{ pic.catName }} - {{ pic.breed.breedName }} <img width=200 src="{{ 'https://cdn.catbook.local/' ~ pic.catPicture }}" /></div>
+    <div>
+      {% for breed in breeds %}
+        <h2>Breed: {{ breed.breedName }}</h2>
+        <div style="display: grid;grid-template-columns: repeat(3, 1fr);grid-gap: 10px;grid-auto-rows: minmax(100px, auto);">
+        {% for pic in breed.catPictures %}
+          <div>{{ loop.index }} {{ pic.catName }} <img width=200 src="{{ asset(pic.catPicture) }}" /></div>
+        {% endfor %}
+        </div>
       {% endfor %}
     </div>
 {% endblock %}
