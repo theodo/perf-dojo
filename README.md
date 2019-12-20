@@ -6,13 +6,16 @@
 git clone git://github.com/theodo/dojo-perf.git
 cd dojo-perf
 docker-compose up -d
-# Add "127.0.0.1 cdn.catbook.local" in your /etc/hosts
-# Add "127.0.0.1 catbook.local" in your /etc/hosts
+docker-compose exec php php bin/console hautelook:fixtures:load -n
 ```
 
-Navigate to `https://catbook.local` and accept the certificate.
+You can now add the following lines to your `/etc/hosts`:
+```
+127.0.0.1 cdn.catbook.local
+127.0.0.1 catbook.local
+```
 
-Navigate to `https://cdn.catbook.local` and accept the certificate.
+Finally, navigate to https://catbook.local and accept the certificate. Do the same for https://cdn.catbook.local.
 
 You are good to go!
 
