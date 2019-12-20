@@ -7,7 +7,7 @@
         <h2>Breed: {{ breed.breedName }}</h2>
         <div style="display: grid;grid-template-columns: repeat(3, 1fr);grid-gap: 10px;grid-auto-rows: minmax(100px, auto);">
         {% for pic in breed.catPictures %}
-          <div>{{ loop.index }} {{ pic.catName }} <img width=200 src="{{ asset(pic.catPicture) }}" /></div>
+          <div>{{ loop.index }} {{ pic.catName }} <img loading="lazy" width="200" height="150" src="{{ asset(pic.catPicture) }}" /></div>
         {% endfor %}
         </div>
       {% endfor %}
