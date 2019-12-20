@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-git clone git://github.com/theodo/dojo-perf.git
+git clone git@github.com:theodo/perf-dojo.git
 cd dojo-perf
 docker-compose up -d
 docker-compose exec php php bin/console hautelook:fixtures:load -n
