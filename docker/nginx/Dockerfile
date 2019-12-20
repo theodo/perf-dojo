@@ -21,4 +21,6 @@ RUN cd ~ && \
 
 COPY docker/nginx/certs /etc/nginx/certs
 COPY docker/nginx/*.conf /etc/nginx/conf.d/
+
+COPY docker/nginx/thirdparty /var/www/thirdparty
 COPY public /var/www/public

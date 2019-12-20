@@ -16,6 +16,7 @@ You can now add the following lines to your `/etc/hosts`:
 ```
 127.0.0.1 cdn.catbook.local
 127.0.0.1 catbook.local
+127.0.0.1 thirdparty.local
 ```
 
 Finally, navigate to https://catbook.local and accept the certificate. Do the same for https://cdn.catbook.local.
