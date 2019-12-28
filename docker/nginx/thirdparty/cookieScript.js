@@ -54,6 +54,8 @@ container.appendChild(p)
 container.appendChild(button)
 container.appendChild(buttonReject)
 
-if(getCookie('cookieConsent') === null) {
-  document.body.appendChild(container);
+window.onload = function() {
+  if(getCookie('cookieConsent') === "") {
+    document.body.appendChild(container);
+  }
 }
