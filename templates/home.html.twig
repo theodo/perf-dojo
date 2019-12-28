@@ -1,15 +1,20 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Pics of cats</h1>
+    <h1 class="font-sans text-4xl text-gray-800 font-extrabold text-center m-8">Pics of cats</h1>
     <div>
       {% for breed in breeds %}
-        <h2>Breed: {{ breed.breedName }}</h2>
-        <div style="display: grid;grid-template-columns: repeat(3, 1fr);grid-gap: 10px;grid-auto-rows: minmax(100px, auto);">
-        {% for pic in breed.catPictures %}
-          <div>{{ loop.index }} {{ pic.catName }} <img width=200 src="{{ asset(pic.catPicture) }}" /></div>
-        {% endfor %}
-        </div>
+        <h2 class="font-sans text-xl text-gray-800 font-bold m-4">Breed: {{ breed.breedName }}</h2>
+        <div class="flex flex-wrap">
+          {% for pic in breed.catPictures %}
+            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 rounded overflow-hidden shadow-lg mx-8">
+              <img class="w-full" src="{{ asset(pic.catPicture) }}" alt="{{ pic.catName }}">
+              <div class="px-6 py-4">
+                <div class="font-normal text-xl text-center text-gray-600 mb-2">{{ pic.catName }}</div>
+              </div>
+            </div>
+          {% endfor %}
+          </div>
       {% endfor %}
     </div>
 {% endblock %}
