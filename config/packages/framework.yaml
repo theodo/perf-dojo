@@ -17,4 +17,4 @@ framework:
     
     assets:
         base_urls:
-            - 'https://cdn.catbook.local/'
+            - '%env(APP_CDN_URL)%'

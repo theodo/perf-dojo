@@ -9,12 +9,14 @@ services:
       POSTGRES_USER: symfony
       POSTGRES_PASSWORD: symfony
   php:
+    image: kraynel/catbook_php:latest-slow
     build:
       context: .
       dockerfile: docker/php-fpm/Dockerfile
     volumes:
       - ./:/var/www:cached
   nginx:
+    image: kraynel/catbook_nginx:latest-slow
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
