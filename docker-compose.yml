@@ -15,14 +15,26 @@ services:
       dockerfile: docker/php-fpm/Dockerfile
     volumes:
       - ./:/var/www:cached
+  php-fast:
+    image: kraynel/catbook_php:latest-fast
+    build:
+      context: .
+      dockerfile: docker/php-fpm/Dockerfile
+      args:
+        PROD_OPTIM: "true"
+    environment:
+      APP_DEBUG: 0
+    volumes:
+      - ./:/var/www:cached
   nginx:
-    image: kraynel/catbook_nginx:latest-slow
+    image: kraynel/catbook_nginx:latest
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
     ports:
       - "80:80"
       - "443:443"
+      - "444:444"
     volumes:
       - ./public:/var/www/public:cached,ro
       - ./docker/nginx/certs:/etc/letsencrypt:cached,ro

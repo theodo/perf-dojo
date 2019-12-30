@@ -18,6 +18,7 @@ RUN cd ~ && \
   rm -rf /etc/nginx/loadModule ~/nginx-1.17.3* ~/ngx_brotli && \
   apk del g++ pcre-dev zlib-dev openssl openssl-dev make
 
+
 COPY docker/nginx/certs /etc/nginx/certs
-COPY docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY docker/nginx/*.conf /etc/nginx/conf.d/
 COPY public /var/www/public
