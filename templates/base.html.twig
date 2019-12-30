@@ -9,5 +9,58 @@
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+        
+        {% if app.request.query.has('spoiler') and app.request.query.get('spoiler') == 'true' %}
+        <div style="position: fixed;right: 0;background:darkgray;color:white;top: 0;padding: 15px 30px;">
+            <h2>Debug mode: ON</h2>
+            <form method="GET">
+                <ul>
+                    {# <li>
+                        <input type="checkbox" name="brotli" checked="{{ app.request.path }}" />
+                        <label for="brotli">Enable Brotli</label>
+                    </li> #}
+                    <li>
+                        <input
+                            type="checkbox"
+                            name="https_assets"
+                            value="true"
+                            {% if app.request.query.has('https_assets') and app.request.query.get('https_assets') == 'true' %}checked{% endif %}
+                        />
+                        <label for="https_assets">Enable https with HTTP/2 for assets</label>
+                    </li>
+                    <li>
+                        <input
+                            type="checkbox"
+                            name="cache_assets"
+                            value="true"
+                            {% if app.request.query.has('cache_assets') and app.request.query.get('cache_assets') == 'true' %}checked{% endif %}
+                        />
+                        <label for="cache_assets">Cache Assets</label>
+                    </li>
+                    <li>
+                        <input
+                            type="checkbox"
+                            name="xdebug_disabled"
+                            value="true"
+                            {% if app.request.query.has('xdebug_disabled') and app.request.query.get('xdebug_disabled') == 'true' %}checked{% endif %}
+                        />
+                        <label for="xdebug_disabled">Disable XDebug and APP_DEBUG</label>
+                    </li>
+                    <li>
+                        <input
+                            type="checkbox"
+                            name="lazy_load"
+                            value="true"
+                            {% if app.request.query.has('lazy_load') and app.request.query.get('lazy_load') == 'true' %}checked{% endif %}
+                        />
+                        <label for="xdebug_disabled">Lazy load images</label>
+                    </li>
+                </ul>
+                <input type="hidden" name="spoiler" value="true" />
+                <button type="submit">Refresh</button>
+            </form>
+        </div>
+        {% endif %}
+
     </body>
 </html>
