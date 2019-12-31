@@ -40,6 +40,15 @@
                     <li>
                         <input
                             type="checkbox"
+                            name="relative_assets"
+                            value="true"
+                            {% if app.request.query.has('relative_assets') and app.request.query.get('relative_assets') == 'true' %}checked{% endif %}
+                        />
+                        <label for="relative_assets">Move assets to same domain</label>
+                    </li>
+                    <li>
+                        <input
+                            type="checkbox"
                             name="xdebug_disabled"
                             value="true"
                             {% if app.request.query.has('xdebug_disabled') and app.request.query.get('xdebug_disabled') == 'true' %}checked{% endif %}
