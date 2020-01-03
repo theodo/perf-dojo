@@ -33,6 +33,9 @@ framework:
                 version: '1'
                 base_urls:
                     - 'https://cdn.%env(APP_BASE_URL)%'
+            thirdparty:
+                base_urls:
+                    - 'https://%env(THIRD_PARTY_BASE_URL)%'
             relative:
                 base_path: '/images'
             js:

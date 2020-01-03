@@ -7,7 +7,7 @@
         {% block stylesheets %}{% endblock %}
 
         {% if not app.request.query.has('thirdparty') %}
-            <script type="text/javascript" src="https://thirdparty.local/cookieScript.js"></script>
+            <script type="text/javascript" src="{{ asset('cookieScript.js', 'thirdparty') }}"></script>
         {% endif %}
     </head>
     <body>
