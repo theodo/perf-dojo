@@ -24,4 +24,5 @@ bin/phpunit
 public/images/*
 
 !docker/nginx/certs
+!docker/nginx/thirdparty
 !docker/nginx/*.conf

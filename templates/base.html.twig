@@ -5,7 +5,10 @@
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <script type="text/javascript" src="https://thirdparty.local/cookieScript.js"></script>
+
+        {% if not app.request.query.has('thirdparty') %}
+            <script type="text/javascript" src="https://thirdparty.local/cookieScript.js"></script>
+        {% endif %}
     </head>
     <body>
         {% block body %}{% endblock %}
@@ -65,6 +68,15 @@
                         />
                         <label for="xdebug_disabled">Natively lazy load images (chrome only)</label>
                     </li>
+                    <li>
+                        <input
+                            type="checkbox"
+                            name="thirdparty"
+                            value="true"
+                            {% if app.request.query.has('thirdparty') and app.request.query.get('thirdparty') == 'true' %}checked{% endif %}
+                        />
+                        <label for="thirdparty">Thirdparty JS: cleanup, copy locally, make async</label>
+                    </li>
                 </ul>
                 <input type="hidden" name="spoiler" value="true" />
                 <button type="submit">Refresh</button>
@@ -72,5 +84,8 @@
         </div>
         {% endif %}
 
+        {% if app.request.query.has('thirdparty') and app.request.query.get('thirdparty') == 'true' %}
+            <script async type="text/javascript" src="{{ asset('cookieScript.js', 'js') }}"></script>
+        {% endif %}
     </body>
 </html>

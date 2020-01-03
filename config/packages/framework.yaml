@@ -35,3 +35,5 @@ framework:
                     - 'https://cdn.%env(APP_BASE_URL)%'
             relative:
                 base_path: '/images'
+            js:
+                base_path: '/js'
