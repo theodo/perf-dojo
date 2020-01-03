@@ -27,6 +27,11 @@ class CatPicture
     private $catPicture;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $catPictureSmall;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Breed")
      * @ORM\JoinColumn(name="breed_id", referencedColumnName="id")
      */
@@ -57,6 +62,18 @@ class CatPicture
     public function setCatPicture(string $catPicture): self
     {
         $this->catPicture = $catPicture;
+
+        return $this;
+    }
+
+    public function getCatPictureSmall(): ?string
+    {
+        return $this->catPictureSmall;
+    }
+
+    public function setCatPictureSmall(string $catPictureSmall): self
+    {
+        $this->catPictureSmall = $catPictureSmall;
 
         return $this;
     }

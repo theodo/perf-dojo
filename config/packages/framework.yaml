@@ -19,20 +19,20 @@ framework:
         packages:
             cdn_nocache_insecure:
                 base_urls:
-                    - 'http://cdn.%env(APP_BASE_URL)%'
+                    - 'http://cdn-%env(APP_BASE_URL)%'
             cdn_nocache_secure:
                 base_urls:
-                    - 'https://cdn.%env(APP_BASE_URL)%'
+                    - 'https://cdn-%env(APP_BASE_URL)%'
             cdn_cache_insecure:
                 version_format: '%%s?cache_assets=true'
                 version: '1'
                 base_urls:
-                    - 'http://cdn.%env(APP_BASE_URL)%'
+                    - 'http://cdn-%env(APP_BASE_URL)%'
             cdn_cache_secure:
                 version_format: '%%s?cache_assets=true'
                 version: '1'
                 base_urls:
-                    - 'https://cdn.%env(APP_BASE_URL)%'
+                    - 'https://cdn-%env(APP_BASE_URL)%'
             thirdparty:
                 base_urls:
                     - 'https://%env(THIRD_PARTY_BASE_URL)%'

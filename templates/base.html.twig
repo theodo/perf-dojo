@@ -53,6 +53,15 @@
                     <li>
                         <input
                             type="checkbox"
+                            name="small_assets"
+                            value="true"
+                            {% if app.request.query.has('small_assets') and app.request.query.get('small_assets') == 'true' %}checked{% endif %}
+                        />
+                        <label for="small_assets">Reduce assets size</label>
+                    </li>
+                    <li>
+                        <input
+                            type="checkbox"
                             name="xdebug_disabled"
                             value="true"
                             {% if app.request.query.has('xdebug_disabled') and app.request.query.get('xdebug_disabled') == 'true' %}checked{% endif %}

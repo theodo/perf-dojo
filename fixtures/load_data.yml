@@ -7,3 +7,4 @@ App\Entity\CatPicture:
     catName: '<firstname()>'
     breed: '@breed_*'
     catPicture: 'cats/<image("public/images/cats", 1024, 768, "cats", 0)>'
+    catPictureSmall: 'cats/<image("public/images/cats", 340, 255, "cats", 0)>'
