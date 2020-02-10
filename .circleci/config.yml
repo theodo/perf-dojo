@@ -65,9 +65,9 @@ jobs:
             - "98:fa:b6:08:17:31:0e:fc:90:72:54:c3:5b:ad:43:99"
       - run: |
           echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-          docker-compse build
+          docker-compose build
           docker-compose push
-          echo "$STAGING_HOST ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE48DCMScGgWuKSa7JvsKbl50HpjGM5j4NqVWKBJ4t0c7I8gu49Pwe9jKTb695mt77Pp8bc/2hPLKhb5x/sXBuw=" >> ~/.ssh/known_hosts
+          echo "$STAGING_HOST ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIrpq7r84u7IJUQjsAwocsEbK/o9e3dQj/aY8m7WWylBsavSy76EmmiHukgec+GNmV62baN1aHqGuizH6M5GdIM=" >> ~/.ssh/known_hosts
           ssh $STAGING_USER@$STAGING_HOST "/home/ubuntu/dojo-perf/deploy-branch.sh"
 workflows:
   version: 2
