@@ -37,6 +37,16 @@ class Freelance
      */
     private $skill;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $yearsOfExperience;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $hourlyRate;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +96,30 @@ class Freelance
     public function setSkill(Skill $skill): self
     {
         $this->skill = $skill;
+
+        return $this;
+    }
+
+    public function getYearsOfExperience(): ?int
+    {
+        return $this->yearsOfExperience;
+    }
+
+    public function setYearsOfExperience(int $yearsOfExperience): self
+    {
+        $this->yearsOfExperience = $yearsOfExperience;
+
+        return $this;
+    }
+
+    public function getHourlyRate(): ?int
+    {
+        return $this->hourlyRate;
+    }
+
+    public function setHourlyRate(int $hourlyRate): self
+    {
+        $this->hourlyRate = $hourlyRate;
 
         return $this;
     }
