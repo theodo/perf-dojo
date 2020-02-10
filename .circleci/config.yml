@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: circleci/php:7.1-browsers
+      - image: circleci/php:7.3
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -43,3 +43,40 @@ jobs:
       #- run: ./vendor/bin/phpunit
       #- run: ./vendor/bin/codecept build
       #- run: ./vendor/bin/codecept run
+      
+  deploy:
+    docker:
+      # Specify the version you desire here
+      - image: circleci/php:7.3
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            # "composer.lock" can be used if it is committed to the repo
+            - v1-dependencies-{{ checksum "composer.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - add_ssh_keys:
+          fingerprints:
+            - "98:fa:b6:08:17:31:0e:fc:90:72:54:c3:5b:ad:43:99"
+      - run: |
+          echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+          docker-compse build
+          docker-compose push
+          echo "$STAGING_HOST ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE48DCMScGgWuKSa7JvsKbl50HpjGM5j4NqVWKBJ4t0c7I8gu49Pwe9jKTb695mt77Pp8bc/2hPLKhb5x/sXBuw=" >> ~/.ssh/known_hosts
+          ssh $STAGING_USER@$STAGING_HOST "/home/ubuntu/dojo-perf/deploy-branch.sh"
+workflows:
+  version: 2
+  build-test-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
