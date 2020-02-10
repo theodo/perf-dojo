@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\BreedRepository;
+use App\Repository\SkillRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,18 +10,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     /**
-     * @var BreedRepository
+     * @var SkillRepository
      */
-    private $breedRepository;
+    private $skillRepository;
 
-    public function __construct(BreedRepository $breedRepository)
+    public function __construct(SkillRepository $skillRepository)
     {
-        $this->breedRepository = $breedRepository;
+        $this->skillRepository = $skillRepository;
     }
 
     public function homeAction(Request $request): Response
     {
-        $breeds = $this->breedRepository->findAll();
+        $skills = $this->skillRepository->findAll();
 
         if ($request->query->has('relative_assets') && $request->query->get('relative_assets') === 'true') {
             $assets = 'relative';
@@ -41,7 +41,7 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home.html.twig', [
-            'breeds' => $breeds,
+            'skills' => $skills,
             'assets' => $assets,
         ]);
     }

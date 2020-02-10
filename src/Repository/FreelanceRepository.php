@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\CatPicture;
+use App\Entity\Freelance;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method CatPicture|null find($id, $lockMode = null, $lockVersion = null)
- * @method CatPicture|null findOneBy(array $criteria, array $orderBy = null)
- * @method CatPicture[]    findAll()
- * @method CatPicture[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Freelance|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Freelance|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Freelance[]    findAll()
+ * @method Freelance[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CatPictureRepository extends ServiceEntityRepository
+class FreelanceRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, CatPicture::class);
+        parent::__construct($registry, Freelance::class);
     }
 
     // /**
-    //  * @return CatPicture[] Returns an array of CatPicture objects
+    //  * @return Freelance[] Returns an array of Freelance objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class CatPictureRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?CatPicture
+    public function findOneBySomeField($value): ?Freelance
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

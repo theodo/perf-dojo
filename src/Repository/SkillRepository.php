@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Breed;
+use App\Entity\Skill;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Breed|null find($id, $lockMode = null, $lockVersion = null)
- * @method Breed|null findOneBy(array $criteria, array $orderBy = null)
- * @method Breed[]    findAll()
- * @method Breed[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Skill|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Skill|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Skill[]    findAll()
+ * @method Skill[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class BreedRepository extends ServiceEntityRepository
+class SkillRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Breed::class);
+        parent::__construct($registry, Skill::class);
     }
 
     // /**
-    //  * @return Breed[] Returns an array of Breed objects
+    //  * @return Skill[] Returns an array of Skill objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class BreedRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Breed
+    public function findOneBySomeField($value): ?Skill
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')

@@ -1,10 +1,17 @@
-App\Entity\Breed:
-  breed_{1..50}:
-    breedName: "<username()>"
+App\Entity\Skill:
+  skill_1:
+    skillName: "React"
+  skill_2:
+    skillName: "Vue"
 
-App\Entity\CatPicture:
-  cat_{1..10}:
-    catName: "<firstname()>"
-    breed: "@breed_*"
-    catPicture: "freelances/<current()>.jpg"
-    catPictureSmall: "freelances/<current()>.jpg"
+App\Entity\Freelance:
+  freelance_{1..6}:
+    name: "<firstname()>"
+    skill: "@skill_1"
+    picture: "freelances/<current()>.jpg"
+    pictureSmall: "freelances/<current()>.jpg"
+  freelance_{7..10}:
+    name: "<firstname()>"
+    skill: "@skill_2"
+    picture: "freelances/<current()>.jpg"
+    pictureSmall: "freelances/<current()>.jpg"
