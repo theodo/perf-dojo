@@ -1,3 +1,11 @@
+FROM node:13.8.0-alpine3.10 as front-build
+WORKDIR /var/www/
+COPY package.json yarn.lock *.config.js ./
+RUN yarn
+COPY templates templates/
+COPY public public/
+RUN yarn build
+
 FROM nginx:1.17.3-alpine
 
 # Add brotli support
@@ -23,4 +31,4 @@ COPY docker/nginx/certs /etc/nginx/certs
 COPY docker/nginx/*.conf /etc/nginx/conf.d/
 
 COPY docker/nginx/thirdparty /var/www/thirdparty
-COPY public /var/www/public
+COPY --from=front-build /var/www/public /var/www/public

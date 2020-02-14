@@ -2,9 +2,13 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
         <title>Imaginary freelances</title>
         {% block stylesheets %}
+        {% if app.request.query.has('css_purge') and app.request.query.get('css_purge') == 'true' %}
+            {{ encore_entry_link_tags('tailwind') }}
+        {% else %}
+            <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.css" rel="stylesheet">
+        {% endif %}
         <link href="css/base.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&subset=latin-ext" rel="stylesheet">
         {% endblock %}
@@ -98,6 +102,16 @@
                             {% if app.request.query.has('thirdparty') and app.request.query.get('thirdparty') == 'true' %}checked{% endif %}
                         />
                         <label for="thirdparty">Thirdparty JS: cleanup, copy locally, make async</label>
+                    </li>
+                    <li>
+                        <input
+                            type="checkbox"
+                            id="css_purge"
+                            name="css_purge"
+                            value="true"
+                            {% if app.request.query.has('css_purge') and app.request.query.get('css_purge') == 'true' %}checked{% endif %}
+                        />
+                        <label for="css_purge">Use PurgeCSS and serve CSS Framework from the same host</label>
                     </li>
                 </ul>
                 <input type="hidden" name="spoiler" value="true" />
