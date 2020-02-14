@@ -21,8 +21,8 @@
         {% block javascripts %}{% endblock %}
         
         {% if app.request.query.has('spoiler') and app.request.query.get('spoiler') == 'true' %}
-        <div style="position: fixed;right: 0;background:darkgray;color:white;top: 0;padding: 15px 30px;">
-            <h2>Debug mode: ON</h2>
+        <div class="fixed object-right-bottom top-0 right-0 bg-gray-400 p-6">
+            <h2 class="text-xl mb-4">Debug mode: ON</h2>
             <form method="GET">
                 <ul>
                     {# <li>
@@ -32,6 +32,7 @@
                     <li>
                         <input
                             type="checkbox"
+                            id="https_assets"
                             name="https_assets"
                             value="true"
                             {% if app.request.query.has('https_assets') and app.request.query.get('https_assets') == 'true' %}checked{% endif %}
@@ -41,6 +42,7 @@
                     <li>
                         <input
                             type="checkbox"
+                            id="cache_assets"
                             name="cache_assets"
                             value="true"
                             {% if app.request.query.has('cache_assets') and app.request.query.get('cache_assets') == 'true' %}checked{% endif %}
@@ -50,6 +52,7 @@
                     <li>
                         <input
                             type="checkbox"
+                            od="relative_assets"
                             name="relative_assets"
                             value="true"
                             {% if app.request.query.has('relative_assets') and app.request.query.get('relative_assets') == 'true' %}checked{% endif %}
@@ -59,6 +62,7 @@
                     <li>
                         <input
                             type="checkbox"
+                            id="small_assets"
                             name="small_assets"
                             value="true"
                             {% if app.request.query.has('small_assets') and app.request.query.get('small_assets') == 'true' %}checked{% endif %}
@@ -68,6 +72,7 @@
                     <li>
                         <input
                             type="checkbox"
+                            id="xdebug_disabled"
                             name="xdebug_disabled"
                             value="true"
                             {% if app.request.query.has('xdebug_disabled') and app.request.query.get('xdebug_disabled') == 'true' %}checked{% endif %}
@@ -77,6 +82,7 @@
                     <li>
                         <input
                             type="checkbox"
+                            id="lazy_load"
                             name="lazy_load"
                             value="true"
                             {% if app.request.query.has('lazy_load') and app.request.query.get('lazy_load') == 'true' %}checked{% endif %}
@@ -86,6 +92,7 @@
                     <li>
                         <input
                             type="checkbox"
+                            id="thirdparty"
                             name="thirdparty"
                             value="true"
                             {% if app.request.query.has('thirdparty') and app.request.query.get('thirdparty') == 'true' %}checked{% endif %}
@@ -94,7 +101,12 @@
                     </li>
                 </ul>
                 <input type="hidden" name="spoiler" value="true" />
-                <button type="submit">Refresh</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded" type="submit">Refresh</button>
+                <button
+                    onclick="document.getElementsByName('spoiler')[0].value = false"
+                    class="bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    type="submit"
+                >Hide debug</button>
             </form>
         </div>
         {% endif %}
