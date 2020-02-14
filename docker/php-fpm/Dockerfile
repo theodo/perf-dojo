@@ -1,3 +1,11 @@
+FROM node:13.8.0-alpine3.10 as front-build
+WORKDIR /var/www/
+COPY package.json yarn.lock *.config.js ./
+RUN yarn
+COPY templates templates/
+COPY public public/
+RUN yarn build
+
 FROM php:7.3-fpm-alpine
 
 # install system basics
@@ -28,6 +36,9 @@ RUN apk add curl --no-cache \
   && composer global require hirak/prestissimo -q --no-plugins --no-scripts \
   && rm -rf /root/.composer \
   && apk del curl
+
+# copy the files built by Webpack Encore
+COPY --from=front-build /var/www/public /var/www/public
 
 # copy the source code
 WORKDIR /var/www
