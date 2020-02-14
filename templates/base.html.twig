@@ -3,15 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>Imaginary freelances</title>
+        {% block stylesheets %}
+        <link href="css/base.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&subset=latin-ext" rel="stylesheet">
+        {% endblock %}
 
         {% if not app.request.query.has('thirdparty') %}
             <script type="text/javascript" src="{{ asset('cookieScript.js', 'thirdparty') }}"></script>
         {% endif %}
     </head>
     <body>
+        {% include "nav.html" %}
+        {% include "hero.html" %}
         {% block body %}{% endblock %}
+        {% include "footer.html" %}
         {% block javascripts %}{% endblock %}
         
         {% if app.request.query.has('spoiler') and app.request.query.get('spoiler') == 'true' %}

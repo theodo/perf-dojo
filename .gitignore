@@ -15,4 +15,5 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-/public/images/cats/*.jpg
+### .DS_Store
+**/.DS_Store

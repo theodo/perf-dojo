@@ -1,10 +1,48 @@
-App\Entity\Breed:
-  breed_{1..50}:
-    breedName: '<username()>'
+App\Entity\Skill:
+  skill_1:
+    skillName: "React"
+  skill_2:
+    skillName: "Vue"
+  skill_3:
+    skillName: "Symfony"
+  skill_4:
+    skillName: "Python"
+  skill_5:
+    skillName: "UX/UI"
 
-App\Entity\CatPicture:
-  cat_{1..100}:
-    catName: '<firstname()>'
-    breed: '@breed_*'
-    catPicture: 'cats/<image("public/images/cats", 1024, 768, "cats", 0)>'
-    catPictureSmall: 'cats/<image("public/images/cats", 340, 255, "cats", 0)>'
+App\Entity\Freelance:
+  freelance_{1..9}:
+    name: "<firstname()>"
+    skill: "@skill_1"
+    picture: "freelances/<current()>.jpg"
+    pictureSmall: "freelances/<current()>.jpg"
+    yearsOfExperience: "<numberBetween(2, 5)>"
+    hourlyRate: "<numberBetween(15, 50)>"
+  freelance_{10..16}:
+    name: "<firstname()>"
+    skill: "@skill_2"
+    picture: "freelances/<current()>.jpg"
+    pictureSmall: "freelances/<current()>.jpg"
+    yearsOfExperience: "<numberBetween(2, 5)>"
+    hourlyRate: "<numberBetween(15, 50)>"
+  freelance_{17..21}:
+    name: "<firstname()>"
+    skill: "@skill_3"
+    picture: "freelances/<current()>.jpg"
+    pictureSmall: "freelances/<current()>.jpg"
+    yearsOfExperience: "<numberBetween(2, 5)>"
+    hourlyRate: "<numberBetween(15, 50)>"
+  freelance_{22..25}:
+    name: "<firstname()>"
+    skill: "@skill_4"
+    picture: "freelances/<current()>.jpg"
+    pictureSmall: "freelances/<current()>.jpg"
+    yearsOfExperience: "<numberBetween(2, 5)>"
+    hourlyRate: "<numberBetween(15, 50)>"
+  freelance_{26..30}:
+    name: "<firstname()>"
+    skill: "@skill_5"
+    picture: "freelances/<current()>.jpg"
+    pictureSmall: "freelances/<current()>.jpg"
+    yearsOfExperience: "<numberBetween(2, 5)>"
+    hourlyRate: "<numberBetween(15, 50)>"
