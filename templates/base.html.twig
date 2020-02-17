@@ -10,7 +10,14 @@
             <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.css" rel="stylesheet">
         {% endif %}
         <link href="css/base.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&subset=latin-ext" rel="stylesheet">
+
+        {% if app.request.query.has('font_optim') and app.request.query.get('font_optim') == 'true' %}
+            <link rel="preconnect" href="https://fonts.gstatic.com/">
+            <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap" rel="stylesheet">
+        {% else %}
+            <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900&subset=latin-ext" rel="stylesheet">
+        {% endif %}
+
         {% endblock %}
 
         {% if not app.request.query.has('thirdparty') %}
@@ -61,7 +68,7 @@
                     <li>
                         <input
                             type="checkbox"
-                            od="relative_assets"
+                            id="relative_assets"
                             name="relative_assets"
                             value="true"
                             {% if app.request.query.has('relative_assets') and app.request.query.get('relative_assets') == 'true' %}checked{% endif %}
@@ -118,12 +125,22 @@
                         />
                         <label for="css_purge">Use PurgeCSS and serve CSS Framework from the same host</label>
                     </li>
+                    <li>
+                        <input
+                            type="checkbox"
+                            id="font_optim"
+                            name="font_optim"
+                            value="true"
+                            {% if app.request.query.has('font_optim') and app.request.query.get('font_optim') == 'true' %}checked{% endif %}
+                        />
+                        <label for="font_optim">Optimize font loading</label>
+                    </li>
                 </ul>
                 <input type="hidden" name="spoiler" value="true" />
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded" type="submit">Refresh</button>
                 <button
                     onclick="document.getElementsByName('spoiler')[0].value = false"
-                    class="bg-transparent hover:bg-blue-700 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    class="bg-transparent hover:bg-blue-700 text-blue-700 font-bold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     type="submit"
                 >Hide debug</button>
             </form>
