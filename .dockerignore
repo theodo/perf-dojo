@@ -20,6 +20,7 @@ docs
 docker-compose.*
 bin/.phpunit
 bin/phpunit
+node_modules
 
 !docker/nginx/certs
 !docker/nginx/thirdparty

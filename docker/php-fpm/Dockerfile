@@ -35,6 +35,8 @@ COPY composer.* ./
 RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader -q && rm -rf /root/.composer
 COPY . ./
 
+COPY --from=kraynel/builder-front:latest /var/www/public/build/*.json /var/www/public/build/
+
 RUN composer dump-autoload --no-scripts --no-dev --optimize -q \
   && rm -rf /root/.composer \
   && bin/console --env=prod cache:warmup -q
