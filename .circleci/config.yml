@@ -65,6 +65,7 @@ jobs:
             - "98:fa:b6:08:17:31:0e:fc:90:72:54:c3:5b:ad:43:99"
       - run: |
           echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+          docker build --tag kraynel/builder-front:latest -f docker/builder-front/Dockerfile .
           docker-compose build
           docker-compose push
           echo "$STAGING_HOST ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIrpq7r84u7IJUQjsAwocsEbK/o9e3dQj/aY8m7WWylBsavSy76EmmiHukgec+GNmV62baN1aHqGuizH6M5GdIM=" >> ~/.ssh/known_hosts
